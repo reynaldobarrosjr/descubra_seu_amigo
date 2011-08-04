@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html class="yui3-js-enabled" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+        <title>StackBlur - A fast, almost Gaussian blur for Canvas by Mario Klingemann, Quasimondo</title>         
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel=StyleSheet href="style.css" TYPE="text/css" MEDIA=screen>
+		<script src="StackBlurDemo_files/yui-min.js"></script>
+		<script src="StackBlurDemo_files/yui.js" type="text/javascript"></script> 
+		
+		<script src="StackBlur.js" language="javascript"></script>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+    (function() {
+        var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+        
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'http://api.flattr.com/js/0.5.0/load.js?mode=auto';
+        
+        t.parentNode.insertBefore(s, t);
+    })();
+/* ]]> */
+</script>
+	
+    <script src="StackBlurDemo_files/loader-min.js" type="text/javascript" id="yui_3_1_0_1_12868170921042"></script><script src="StackBlurDemo_files/combo.js" type="text/javascript" id="yui_3_1_0_1_12868170921043"></script></head>
+    <body>
+		
+         <div id="imageHolder" style="position:absolute;left:20px; top:20px;text-align:center;font-size:10px;">
+			 <img id="srcimg" src="StackBlurDemo_files/lonerider2.jpg"><br>
+		</div>
+		<div id="canvasHolder" style="position:absolute;left:20px; top:20px;text-align:center;font-size:10px;">
+			 <canvas height="375" width="500" style="width: 500px; height: 375px;" id="canvas">
+
+		</canvas></div>
+
+		
+		<div id="slider-contentbox"> 
+			<div id="slider-valuebox"> 
+				<div style="left: -5px; top: -10px;" id="slider-thumb" class="slider yui3-dd-draggable"> </div> 
+			</div> 
+		</div> 
+		<div id="centerlog" style="position:absolute; left: 230px; top:403px;font-size:12px;">Radius: 0</div><input type="button" onclick="desembassar()" value="desembassar" />
+		<div style="position:absolute; left: 450px; top:400px;">
+		
+		<script type="text/javascript">
+		
+		var blurRadius = 100;
+		
+		function desembassar(){
+			
+			var t=setInterval("desembassa()",1000);
+			
+		
+		}
+		
+		function desembassa(){
+		
+			while (blurRadius>0){
+			    blurRadius = blurRadius-10;
+				stackBlurImage( 'srcimg', 'canvas', blurRadius, false );
+				blurRadius = blurRadios-1;
+			
+			}
+		
+		}
+		
+		
+		
+		function show_confirm()
+			{
+				var r=confirm("Press a button");
+				if (r==true)
+  			{
+  			
+  			alert(blurRadius);
+  			}
+		else
+  			{
+  			alert("You pressed Cancel!");
+  			}
+		}
+
+		
+		
+		YUI({
+		//Last Gallery Build of this module
+		gallery: 'gallery-2010.02.19-03'
+	}).use('dd-constrain', 'node', 'gallery-center', 'gallery-simpleslider', function( Y ) {
+			var thumb = Y.one('#slider-thumb'),
+				slider = new Y.apm.SimpleSlider({
+					node: '#slider-contentbox'
+				}).render();
+	 
+			slider.on('valueChange', function(e) {
+				blurRadius = e.newVal[0];
+				Y.one('#centerlog').set('innerHTML', "Radius: " + e.newVal[0]);
+				stackBlurImage( 'srcimg', 'canvas', blurRadius, false );
+			});
+			
+		})
+		</script>
+		</div>
+	</body>
+</html>

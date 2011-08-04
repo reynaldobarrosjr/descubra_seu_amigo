@@ -1,0 +1,38 @@
+<style type="text/css" media="screen"> 
+			body { text-align:center; background-color: #ffffff; }   
+				   
+		   .slider {
+				position: relative;
+				text-align: center;
+				cursor: move;
+				padding: 0;
+				margin: 0;
+				height: 21px;
+				width: 21px;
+			}
+			 
+			.slider div { }
+			 
+			#slider-contentbox {
+				position: absolute;
+				top: 400px;
+				left: 20px;
+				height: 1px;
+				width: 181px;
+				padding: 10px;
+				background-color: #CDCDCD;
+			}
+			#slider-valuebox {
+				position: relative;
+				height: 1px;
+				background-color: #666;
+			}
+			 
+			#slider-thumb { 
+				background-color: #202020;
+				top:-10px;
+				left:-10px;
+				color: #000;
+			}
+
+</style>
