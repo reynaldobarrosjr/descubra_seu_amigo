@@ -13,8 +13,13 @@
 <script type="text/javascript">
 $(function () {
 	var austDay = new Date();
-	austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
-	$('#defaultCountdown').countdown({until: austDay});
+	//new Date(year, month, day, hours, minutes, seconds, milliseconds)
+	alerta = new Date(austDay.getSeconds());
+	alerta = new Date();
+	
+	alert(alerta.getSeconds()+10);
+	austDay = 10;
+	$('#defaultCountdown').countdown({until: austDay,format: 'S'});
 	$('#year').text(austDay.getFullYear());
 });
 </script>
