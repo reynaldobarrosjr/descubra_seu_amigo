@@ -9,8 +9,11 @@
 #defaultCountdown { width: 240px; height: 45px; }
 </style>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+
 <script type="text/javascript" src="jquery.countdown.js"></script>
+<script type="text/javascript" src="jquery.countdown-pt-BR.js"></script>
 <script type="text/javascript">
+$.countdown.setDefaults($.countdown.regional['pt-BR']);
 $(function () {
 	var austDay = new Date();
 	//new Date(year, month, day, hours, minutes, seconds, milliseconds)
@@ -19,9 +22,18 @@ $(function () {
 	
 	alert(alerta.getSeconds()+10);
 	austDay = 10;
-	$('#defaultCountdown').countdown({until: austDay,format: 'S'});
+	
+
+
+	$('#defaultCountdown').countdown({until: austDay,format: 'S'},$.countdown.regional['pt-BR']);
+	
+			
+
 	$('#year').text(austDay.getFullYear());
+	
 });
+
+
 </script>
 </head>
 <body>
