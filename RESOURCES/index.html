@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>Contagem Regressiva</title>
+<style type="text/css">
+@import "css/jquery.countdown.css";
+
+#defaultCountdown { width: 240px; height: 45px; }
+</style>
+<script src="StackBlurDemo_files/yui-min.js"></script>
+<script src="StackBlurDemo_files/yui.js" type="text/javascript"></script> 
+<script src="StackBlur.js" language="javascript"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.countdown.js"></script>
+<script type="text/javascript" src="jquery.countdown-pt-BR.js"></script>
+<script type="text/javascript">
+$.countdown.setDefaults($.countdown.regional['pt-BR']);
+
+
+
+
+
+$(function () {
+
+
+$('#pauseButton').toggle(function() { 
+        $(this).text('Resume'); 
+        $('#defaultCountdown').countdown('pause'); 
+    }, 
+    function() { 
+        $(this).text('Pause'); 
+        $('#defaultCountdown').countdown('resume'); 
+    } 
+);
+
+	var austDay = new Date();
+	//new Date(year, month, day, hours, minutes, seconds, milliseconds)
+	alerta = new Date(austDay.getSeconds());
+	alerta = new Date();
+	
+	//alert(alerta.getSeconds()+10);
+	austDay = 30;
+	
+
+
+	$('#defaultCountdown').countdown({until: austDay,format: 'S'},$.countdown.regional['pt-BR']);
+	
+			
+
+	$('#year').text(austDay.getFullYear());
+	
+	
+	
+});
+
+
+ 
+
+
+
+</script>
+</head>
+<body>
+<h1>Descubra Seu Amigo - Projeto Piloto</h1>
+
+<div id="defaultCountdown"></div>
+<button id="pauseButton" type="button">Pause</button>
+<div id="imageHolder">
+			 <img id="srcimg" src="StackBlurDemo_files/lonerider2.jpg"><br>
+		</div>
+		<div id="canvasHolder">
+			 <canvas height="375" width="500" id="canvas">
+
+		</canvas></div>
+
+		
+		
+		<div id="centerlog">Radius: 0</div><input type="button" onclick="desembassar()" value="desembassar" />
+		<div style="position:absolute; left: 450px; top:400px;">
+		
+		<script type="text/javascript">
+		
+		var blurRadius = 100;
+		
+		function desembassar(){
+			
+			var t=setInterval("desembassa()",1000);
+			
+		
+		}
+		
+		function desembassa(){
+		
+			while (blurRadius>0){
+			    blurRadius = blurRadius-10;
+				stackBlurImage( 'srcimg', 'canvas', blurRadius, false );
+				blurRadius = blurRadios-1;
+			
+			}
+		
+		}
+		
+		
+		
+		function show_confirm()
+			{
+				var r=confirm("Press a button");
+				if (r==true)
+  			{
+  			
+  			alert(blurRadius);
+  			}
+		else
+  			{
+  			alert("You pressed Cancel!");
+  			}
+		}
+
+		
+		
+		YUI({
+		//Last Gallery Build of this module
+		gallery: 'gallery-2010.02.19-03'
+	}).use('dd-constrain', 'node', 'gallery-center', 'gallery-simpleslider', function( Y ) {
+			var thumb = Y.one('#slider-thumb'),
+				slider = new Y.apm.SimpleSlider({
+					node: '#slider-contentbox'
+				}).render();
+	 
+			slider.on('valueChange', function(e) {
+				blurRadius = e.newVal[0];
+				Y.one('#centerlog').set('innerHTML', "Radius: " + e.newVal[0]);
+				stackBlurImage( 'srcimg', 'canvas', blurRadius, false );
+			});
+			
+		})
+		</script>
+		</div>
+
+
+</body>
+</html>
