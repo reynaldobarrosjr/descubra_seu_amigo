@@ -18,19 +18,17 @@
 $.countdown.setDefaults($.countdown.regional['pt-BR']);
 
 
-
-
-
 $(function () {
 
 
 $('#pauseButton').toggle(function() { 
         $(this).text('Resume'); 
-        $('#defaultCountdown').countdown('pause'); 
+        $('#defaultCountdown').countdown('resume'); 
+        desembassar();
     }, 
     function() { 
         $(this).text('Pause'); 
-        $('#defaultCountdown').countdown('resume'); 
+        $('#defaultCountdown').countdown('pause'); 
     } 
 );
 
@@ -61,11 +59,11 @@ $('#pauseButton').toggle(function() {
 
 </script>
 </head>
-<body>
+<body onLoad="$('#defaultCountdown').countdown('pause');">
 <h1>Descubra Seu Amigo - Projeto Piloto</h1>
 
 <div id="defaultCountdown"></div>
-<button id="pauseButton" type="button">Pause</button>
+<button id="pauseButton" type="button">Resume</button>
 <div id="imageHolder">
 			 <img id="srcimg" src="StackBlurDemo_files/lonerider2.jpg"><br>
 		</div>
